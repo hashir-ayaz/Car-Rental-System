@@ -6,6 +6,7 @@ public class CompactCar extends Car {
     public CompactCar(int carID, String brand, String model, int year, boolean rentStatus, float fees,
             String numPlate, String featureList) {
         super(carID, brand, model, year, rentStatus, fees, numPlate);
+
         this.insurable = false;
         this.distanceTravelledCost = 0.0f;
         this.features = featureList;

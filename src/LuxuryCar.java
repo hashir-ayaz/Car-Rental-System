@@ -2,7 +2,7 @@ public class LuxuryCar extends Car {
     private boolean insurable;
     private float distanceTravelledCost;
     private String features;
-    // private int damageCost;
+    private double damageCost;
     private double insuranceCost;
 
     public LuxuryCar(int carID, String brand, String model, int year, boolean rentStatus, float baseRent,
@@ -11,7 +11,7 @@ public class LuxuryCar extends Car {
         this.insurable = true;
         this.distanceTravelledCost = 0.0f;
         this.features = featureList;
-        // this.damageCost = 30%;
+        this.damageCost = 0.3;
         this.insuranceCost = 0.2 * baseRent; // 20% of rental fee
     }
 
@@ -28,9 +28,9 @@ public class LuxuryCar extends Car {
         return this.features;
     }
 
-    // public int getDamageCost() {
-    // return damageCost;
-    // }
+    public double getDamageCost() {
+        return damageCost;
+    }
 
     public double getInsuranceCost() {
         return insuranceCost;
@@ -49,9 +49,9 @@ public class LuxuryCar extends Car {
         this.features = featureList;
     }
 
-    // public void setDamageCost(int damageCost) {
-    // this.damageCost = damageCost;
-    // }
+    public void setDamageCost(int damageCost) {
+        this.damageCost = damageCost;
+    }
 
     public void setInsuranceCost(int insuranceCost) {
         this.insuranceCost = insuranceCost;

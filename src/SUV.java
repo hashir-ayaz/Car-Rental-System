@@ -3,7 +3,7 @@ public class SUV extends Car {
     private double insuranceCost;
     private float distanceTravelledCost;
     private String features;
-    // private int damageCost;
+    private double damageCost;
 
     public SUV(int carID, String brand, String model, int year, boolean rentStatus, float baseRent, String numPlate,
             String featureList) {
@@ -11,7 +11,7 @@ public class SUV extends Car {
         this.insurable = true;
         this.distanceTravelledCost = 0.0f;
         this.features = featureList;
-        // this.damageCost = 0;
+        this.damageCost = 0;
         this.insuranceCost = 0.1 * baseRent; // 10% of rental fee
 
     }
@@ -33,9 +33,9 @@ public class SUV extends Car {
         return this.features;
     }
 
-    // public int getDamageCost() {
-    // return damageCost;
-    // }
+    public double getDamageCost() {
+        return damageCost;
+    }
 
     // setters
     public void setInsurable(boolean insurable) {
@@ -54,9 +54,9 @@ public class SUV extends Car {
         this.features = featureList;
     }
 
-    // public void setDamageCost(int damageCost) {
-    // this.damageCost = damageCost;
-    // }
+    public void setDamageCost(int damageCost) {
+        this.damageCost = damageCost;
+    }
 
     public void printCar() {
         System.out.println("The details for this car are: ");
@@ -72,7 +72,7 @@ public class SUV extends Car {
         System.out.println("\t Distance Travelled Cost -> " + this.getDistanceTravelledCost());
         System.out.println("\t Insurable -> " + this.isInsurable());
         System.out.println("\t Insurance Cost -> $" + this.getInsuranceCost());
-        // System.out.println("\t Damage Cost -> " + this.getDamageCost());
+        System.out.println("\t Damage Cost Percentage is -> " + this.getDamageCost());
         System.out.println("\n");
 
     }

@@ -23,6 +23,15 @@ public class CarManagement {
         }
     }
 
+    public Car getCar(int carID) {
+        for (Car car : allCars) {
+            if (car.getCarID() == carID) {
+                return car;
+            }
+        }
+        return null;
+    }
+
     public void printAllAvailableCars() {
         for (Car car : allCars) {
             if (!car.isRentalStatus()) {

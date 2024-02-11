@@ -17,6 +17,17 @@ public class RenterManagement {
         allRenters.remove(index);
     }
 
+    public Renter getRenter(String name) {
+        for (Renter renter : allRenters) {
+            if (renter.getName().equals(name)) {
+                return renter;
+            }
+        }
+        System.err.println("Renter not found");
+        return null;
+
+    }
+
     public void printAllRenters() {
         for (Renter renter : allRenters) {
             renter.printRenter();
