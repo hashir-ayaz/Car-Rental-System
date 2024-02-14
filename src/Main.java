@@ -19,6 +19,8 @@ public class Main {
                 {
                         // adding cars
                         carManagement.addCar(new SUV("1", "Toyota", "Fortuner", 2021, false, 1000, "ABC-123"));
+                        carManagement.addCar(new LuxuryCar("2", "Honda", "civic", 2023, false, 2000, "H-1881"));
+                        carManagement.addCar(new CompactCar("3", "Suzuki", "Mehran", 2019, false, 500, "XYZ-123"));
                 }
                 {
                         // adding renters
@@ -46,21 +48,17 @@ public class Main {
                 String address = scanner.nextLine();
                 System.out.println("Enter your renter type:(regular/frequent/corporate) ");
                 String renterType = scanner.nextLine();
+
                 Renter tempRenter = null;
                 if (renterType.equals("regular")) {
                         tempRenter = new RegularRenter(420, name, email, phone, address);
                 } else if (renterType.equals("frequent")) {
-                        tempRenter = new FrequentRenter(420, name, email, phone, address, 0.30);
+                        tempRenter = new FrequentRenter(410, name, email, phone, address, 0.30);
                 } else if (renterType.equals("corporate")) {
-                        tempRenter = new CorporateRenter(420, name, email, phone, address);
+                        tempRenter = new CorporateRenter(20, name, email, phone, address);
                 } else {
                         System.out.println("Invalid renter type");
                 }
-
-                // Renter tempRenter = new FrequentRenter(420, "yummyboy", "yummyboy@gmail.com",
-                // "+92 333 6789876",
-                // "everywhere , street 3", 30);
-                // renterManagement.addRenter(tempRenter);
 
                 System.out.println("All available cars are:");
                 carManagement.printAllAvailableCars();
@@ -70,14 +68,19 @@ public class Main {
                 tempRenter.rentCar(carManagement.getCar(carID));
                 System.out.println("how many days do you want to rent the car for?");
                 int daysRented = scanner.nextInt();
-                carManagement.getCar(carID).setRentalStatus(true);
+                // carManagement.getCar(carID).setRentalStatus(true);
+                carManagement.setRentStatus(carID, true);
 
                 rentTransactions.add(
                                 new RentTransaction(tempRenter, carManagement.getCar(carID), daysRented, true, 500));
 
                 // loop to print the rent transactions
                 for (RentTransaction rentTransaction : rentTransactions) {
-                        rentTransaction.printTransaction();
+                        if (rentTransactions.size() > 0) {
+                                rentTransaction.printTransaction();
+                        } else {
+                                System.out.println("No transactions available");
+                        }
                 }
 
                 scanner.close();

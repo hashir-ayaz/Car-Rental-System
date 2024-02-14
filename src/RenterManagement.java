@@ -11,6 +11,7 @@ public class RenterManagement {
         this.allRenters.add(renter);
     }
 
+    @SuppressWarnings("unlikely-arg-type")
     public void removeRenter(int renterID) {
         int index = 0;
         index = allRenters.indexOf(renterID);

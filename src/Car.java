@@ -21,7 +21,7 @@ public abstract class Car {
     public abstract double calculateRent(double distance);
 
     public boolean isInsurable() {
-        return false; // Default implementation
+        return false; // false by default
     }
 
     public abstract void printCar();
@@ -83,4 +83,8 @@ public abstract class Car {
     public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
     }
+
+    public abstract double getDamageCostInsured();
+
+    public abstract double getDamageCostUninsured();
 }

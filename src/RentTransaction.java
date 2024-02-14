@@ -1,4 +1,4 @@
-import java.util.List;
+// import java.util.List;
 
 public class RentTransaction {
     // sort of acts like a receipt
@@ -15,7 +15,6 @@ public class RentTransaction {
         this.renter = renter;
         this.car = car;
         this.numDaysRented = numDaysRented;
-
         this.damageCost = 0.0;
         this.distanceTravelled = distanceTravelled;
         this.hasDamage = damaged;
@@ -82,24 +81,35 @@ public class RentTransaction {
         this.car = car;
     }
 
-    public void printTransaction() {
-        System.out.println("The details for this transaction are: ");
-        System.out.println("\tRenter " + this.getRenter().getName() + " has rented the car with ID "
-                + this.getCar().getCarID() + " for " + this.getNumDaysRented() + " days.");
-        calculateTotalCost();
-        System.out.println("\tThe total cost for this transaction is $" + this.getTotalCost());
-        System.out.println("\tThe distance travelled cost is " + this.getDistanceTravelled());
-        System.out.println("\tThe damage status is " + this.isHasDamage() + "\n");
-    }
-
-    public void calculateTotalCost() {
+    public double calculateTotalCost(Boolean insured) {
         double cost = 0.0;
         cost = this.getCar().getRentalFee() * this.getNumDaysRented();
         this.setTotalCost(cost);
 
         if (hasDamage) {
-            // this.setTotalCost(this.getTotalCost() + this.getCar().getDamageCost());
+            if (insured) {
+                cost += this.getCar().getDamageCostInsured();
+            } else {
+                cost += this.getCar().getDamageCostUninsured();
+            }
         }
+        return this.getTotalCost();
+    }
+
+    public void printTransaction() {
+        System.out.println("The details for this transaction are: ");
+        System.out.println("\tRenter " + this.getRenter().getName() + " has rented the car with ID "
+                + this.getCar().getCarID() + " for " + this.getNumDaysRented() + " days.");
+        System.out.println("\tThe total cost for this transaction is $" + calculateTotalCost(true));
+        System.out.println("\tThe distance travelled cost is " + this.getDistanceTravelled());
+        System.out.println("\tThe damage status is " + this.isHasDamage() + "\n");
+    }
+
+    public void returnCar() {
+        System.out.println(
+                "The car with ID " + this.getCar().getCarID() + " has been returned by " + this.getRenter().getName());
+        this.getCar().setRentalStatus(false);
+
     }
 
 }

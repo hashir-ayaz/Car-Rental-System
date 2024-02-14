@@ -10,6 +10,7 @@ public class CompactCar extends Car {
     }
 
     public void printCar() {
+        System.out.println("\t-------------------");
         System.out.println("\tCompactCar");
         System.out.println("\tthe id for the car is " + this.carID);
         System.out.println("\tthe brand for the car is " + this.brand);
@@ -18,7 +19,16 @@ public class CompactCar extends Car {
         System.out.println("\tthe rental status for the car is " + this.rentalStatus);
         System.out.println("\tthe rental fee for the car is " + this.rentalFee);
         System.out.println("\tthe plate number for the car is " + this.plateNumber);
-        System.out.println(isInsurable() ? "The car is insurable" : "The car is not insurable");
+        System.out.println(isInsurable() ? "\tThe car is insurable" : "\tThe car is not insurable");
 
+    }
+
+    public double getDamageCostUninsured() {
+        return 0;
+
+    }
+
+    public double getDamageCostInsured() {
+        return 0;
     }
 }

@@ -1,0 +1,11 @@
+Compact Car Rent Calculation Formula: Base rent + distance traveled cost.
+
+SUV Rent Calculation Formula: Base rent + distance traveled cost.
+
+Luxury Car Rent Calculation Formula: Base rent + distance traveled cost + luxury tax.
+
+if uninsured , damage cost is damage percentage x total cost
+
+if insured , (damage cost is damage percentage x total cost) - insurance cost
+
+

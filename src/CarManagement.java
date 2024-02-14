@@ -11,6 +11,7 @@ public class CarManagement {
         this.allCars.add(car);
     }
 
+    @SuppressWarnings("unlikely-arg-type")
     public void removeCar(int carID) {
         int index = 0;
         index = allCars.indexOf(carID);
@@ -32,16 +33,12 @@ public class CarManagement {
     }
 
     public Car getCar(String carID) {
-        if (allCars.isEmpty()) {
-            System.err.println("No cars available");
-            return null;
-        }
-
         for (Car car : allCars) {
-            if (car.getCarID() == carID) {
+            if (car.getCarID().equals(carID)) {
                 return car;
             }
         }
+        System.err.println("Car not found");
         return null;
     }
 
@@ -52,4 +49,5 @@ public class CarManagement {
             }
         }
     }
+
 }
