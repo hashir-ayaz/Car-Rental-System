@@ -23,7 +23,7 @@ public class CarManagement {
         }
     }
 
-    public void setRentStatus(int carID, boolean status) {
+    public void setRentStatus(String carID, boolean status) {
         for (Car car : allCars) {
             if (car.getCarID() == carID) {
                 car.setRentalStatus(status);
@@ -31,7 +31,7 @@ public class CarManagement {
         }
     }
 
-    public Car getCar(int carID) {
+    public Car getCar(String carID) {
         if (allCars.isEmpty()) {
             System.err.println("No cars available");
             return null;

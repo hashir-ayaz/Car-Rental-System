@@ -18,8 +18,7 @@ public class Main {
 
                 {
                         // adding cars
-                        carManagement.addCar(new CompactCar(1, "Toyota", "Corolla", 2019, false, 1000.0f, "ABC-123",
-                                        "Basic features, suitable for short-distance travel."));
+                        carManagement.addCar(new SUV("1", "Toyota", "Fortuner", 2021, false, 1000, "ABC-123"));
                 }
                 {
                         // adding renters
@@ -67,7 +66,7 @@ public class Main {
                 carManagement.printAllAvailableCars();
 
                 System.out.println("Enter the car ID you want to rent: ");
-                int carID = scanner.nextInt();
+                String carID = scanner.nextLine();
                 tempRenter.rentCar(carManagement.getCar(carID));
                 System.out.println("how many days do you want to rent the car for?");
                 int daysRented = scanner.nextInt();

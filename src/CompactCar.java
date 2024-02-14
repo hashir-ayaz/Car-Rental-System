@@ -1,34 +1,24 @@
 public class CompactCar extends Car {
-
-    public CompactCar(int carID, String brand, String model, int year, boolean rentStatus, float fees,
-            String numPlate, String featureList) {
-        super(carID, brand, model, year, rentStatus, fees, numPlate);
-        this.setInsurable(false);
-        this.setDistanceTravelledCost((5 / 100) * fees); // 5% of base rent
-        this.setFeatures("compact car features");
-
-    }
-
-    public void printCar() {
-        System.out.println("The details for this car are: ");
-
-        System.out.println("\n\t Car ID -> " + this.getCarID());
-        System.out.println("\t Brand -> " + this.getBrand());
-        System.out.println("\t Model -> " + this.getModel());
-        System.out.println("\t Year -> " + this.getYear());
-        System.out.println(isRentalStatus() ? "\t status = rented" : "\t status = not rented");
-        System.out.println("\t Rental Fee -> " + this.getRentalFee());
-        System.out.println("\t Plate Number -> " + this.getPlateNumber());
-        System.out.println("\t Features -> " + this.getFeatures());
-        System.out.println("\t Distance Travelled Cost -> " + this.getDistanceTravelledCost());
-        System.out.println("\t Insurable -> " + this.isInsurable());
-        System.out.println("\n");
-
+    public CompactCar(String carID, String brand, String model, int year, boolean rentalStatus, double rentalFee,
+            String plateNumber) {
+        super(carID, brand, model, year, rentalStatus, rentalFee, plateNumber);
     }
 
     @Override
-    public double calculateRent() {
-        return getRentalFee() + getDistanceTravelledCost();
+    public double calculateRent(double distance) {
+        return this.rentalFee + distance;
     }
 
+    public void printCar() {
+        System.out.println("\tCompactCar");
+        System.out.println("\tthe id for the car is " + this.carID);
+        System.out.println("\tthe brand for the car is " + this.brand);
+        System.out.println("\tthe model for the car is " + this.model);
+        System.out.println("\tthe year for the car is " + this.year);
+        System.out.println("\tthe rental status for the car is " + this.rentalStatus);
+        System.out.println("\tthe rental fee for the car is " + this.rentalFee);
+        System.out.println("\tthe plate number for the car is " + this.plateNumber);
+        System.out.println(isInsurable() ? "The car is insurable" : "The car is not insurable");
+
+    }
 }

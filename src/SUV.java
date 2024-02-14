@@ -1,56 +1,44 @@
 public class SUV extends Car {
-    private double insuranceCost;
-    private double damageCost;
+    private final double insuranceCostPercentage = 0.05; // Example value
+    private final double damageCostPercentage = 0.1; // Example value
 
-    // constructor
-    public SUV(int carID, String brand, String model, int year, boolean rentStatus, float fees, String numPlate,
-            double damageCost, double insuranceCost) {
-        super(carID, brand, model, year, rentStatus, fees, numPlate);
-        this.damageCost = damageCost;
-        this.insuranceCost = insuranceCost;
-        this.setFeatures("basic SUV");
+    public SUV(String carID, String brand, String model, int year, boolean rentalStatus, double rentalFee,
+            String plateNumber) {
+        super(carID, brand, model, year, rentalStatus, rentalFee, plateNumber);
     }
 
     // getters
-
-    public double getInsuranceCost() {
-        return insuranceCost;
+    public double getInsuranceCostPercentage() {
+        return insuranceCostPercentage;
     }
 
-    public double getDamageCost() {
-        return this.damageCost;
+    public double getDamageCostPercentage() {
+        return damageCostPercentage;
     }
 
-    // setters
-    public void setInsuranceCost(int insuranceCost) {
-        this.insuranceCost = insuranceCost;
+    @Override
+    public double calculateRent(double distance) {
+        return this.rentalFee + distance;
     }
 
-    public void setDamageCost(int damageCost) {
-        this.damageCost = damageCost;
+    @Override
+    public boolean isInsurable() {
+        return true;
+    }
+
+    public double calculateInsuranceCost() {
+        return this.rentalFee * this.insuranceCostPercentage;
     }
 
     public void printCar() {
-        System.out.println("The details for this car are: ");
-
-        System.out.println("\n\t Car ID -> " + this.getCarID());
-        System.out.println("\t Brand -> " + this.getBrand());
-        System.out.println("\t Model -> " + this.getModel());
-        System.out.println("\t Year -> " + this.getYear());
-        System.out.println(isRentalStatus() ? "\t status = rented" : "\t status = not rented");
-        System.out.println("\t Rental Fee -> " + this.getRentalFee());
-        System.out.println("\t Plate Number -> " + this.getPlateNumber());
-        System.out.println("\t Features -> " + this.getFeatures());
-        System.out.println("\t Distance Travelled Cost -> " + this.getDistanceTravelledCost());
-        System.out.println("\t Insurable -> " + this.isInsurable());
-        System.out.println("\t Insurance Cost -> $" + this.getInsuranceCost());
-        System.out.println("\t Damage Cost Percentage is -> " + this.getDamageCost());
-        System.out.println("\n");
-
+        System.out.println("\tthis is an SUV");
+        System.out.println("\tthe id for the car is " + this.carID);
+        System.out.println("\tthe brand for the car is " + this.brand);
+        System.out.println("\tthe model for the car is " + this.model);
+        System.out.println("\tthe year for the car is " + this.year);
+        System.out.println("\tthe rental status for the car is " + this.rentalStatus);
+        System.out.println("\tthe rental fee for the car is " + this.rentalFee);
+        System.out.println("\tthe plate number for the car is " + this.plateNumber);
+        System.out.println(isInsurable() ? "The car is insurable" : "The car is not insurable");
     }
-
-    public double calculateRent() {
-        return this.getRentalFee() + this.getDamageCost() + this.getInsuranceCost();
-    }
-
 }

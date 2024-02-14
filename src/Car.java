@@ -1,44 +1,34 @@
 public abstract class Car {
-    private int carID;
-    private String brand;
-    private String model;
-    private int year;
-    private boolean rentalStatus;
-    private float rentalFee;
-    private String plateNumber;
-    private boolean isInsurable;
-    private String features;
-    private double distanceTravelledCost;
+    protected String carID;
+    protected String brand;
+    protected String model;
+    protected int year;
+    protected boolean rentalStatus;
+    protected double rentalFee;
+    protected String plateNumber;
 
-    public Car(int carID, String brand, String model, int year, boolean rentStatus, float fees, String numPlate) {
+    public Car(String carID, String brand, String model, int year, boolean rentalStatus, double rentalFee,
+            String plateNumber) {
         this.carID = carID;
         this.brand = brand;
         this.model = model;
         this.year = year;
-        this.rentalFee = fees;
-        this.rentalStatus = rentStatus;
-        this.plateNumber = numPlate;
-        this.isInsurable = true;
-        this.features = "";
-        this.distanceTravelledCost = 0.0;
-
+        this.rentalStatus = rentalStatus;
+        this.rentalFee = rentalFee;
+        this.plateNumber = plateNumber;
     }
 
-    // Getters
-    public int getCarID() {
-        return this.carID;
-    }
+    public abstract double calculateRent(double distance);
 
     public boolean isInsurable() {
-        return this.isInsurable;
+        return false; // Default implementation
     }
 
-    public String getFeaturesList() {
-        return this.features;
-    }
+    public abstract void printCar();
 
-    public double getDistanceTravelledCost() {
-        return this.distanceTravelledCost;
+    // Getters
+    public String getCarID() {
+        return carID;
     }
 
     public String getBrand() {
@@ -57,7 +47,7 @@ public abstract class Car {
         return rentalStatus;
     }
 
-    public float getRentalFee() {
+    public double getRentalFee() {
         return rentalFee;
     }
 
@@ -65,12 +55,8 @@ public abstract class Car {
         return plateNumber;
     }
 
-    public String getFeatures() {
-        return this.features;
-    }
-
     // Setters
-    public void setCarID(int carID) {
+    public void setCarID(String carID) {
         this.carID = carID;
     }
 
@@ -90,28 +76,11 @@ public abstract class Car {
         this.rentalStatus = rentalStatus;
     }
 
-    public void setInsurable(boolean insurable) {
-        this.isInsurable = insurable;
-    }
-
-    public void setRentalFee(float rentalFee) {
+    public void setRentalFee(double rentalFee) {
         this.rentalFee = rentalFee;
     }
 
     public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
     }
-
-    public void setFeatures(String s) {
-        this.features = s;
-    }
-
-    public void setDistanceTravelledCost(double cost) {
-        this.distanceTravelledCost = cost;
-    }
-
-    public abstract void printCar();
-
-    public abstract double calculateRent();
-
 }

@@ -1,51 +1,51 @@
 public class LuxuryCar extends Car {
-    private double damageCost;
-    private double insuranceCost;
+    private final double insuranceCostPercentage = 0.1;
+    private final double damageCostPercentage = 0.15;
+    private final double luxuryTax = 50;
 
-    // constructor
-    public LuxuryCar(int carID, String brand, String model, int year, boolean rentStatus, float fees, String numPlate,
-            double damageCost, double insuranceCost) {
-        super(carID, brand, model, year, rentStatus, fees, numPlate);
-        this.damageCost = damageCost;
-        this.insuranceCost = insuranceCost;
-        this.setFeatures("Luxury Car Features");
+    public LuxuryCar(String carID, String brand, String model, int year, boolean rentalStatus, double rentalFee,
+            String plateNumber) {
+        super(carID, brand, model, year, rentalStatus, rentalFee, plateNumber);
     }
 
-    // Getters
-    public double getDamageCost() {
-        return this.damageCost;
+    // getters
+    public double getLuxuryTax() {
+        return luxuryTax;
     }
 
-    public double getInsuranceCost() {
-        return this.insuranceCost;
+    public double getInsuranceCostPercentage() {
+        return insuranceCostPercentage;
     }
 
-    // Setters
-
-    public void setDamageCost(double damageCost) {
-        this.damageCost = damageCost;
+    public double getDamageCostPercentage() {
+        return damageCostPercentage;
     }
 
-    public void setInsuranceCost(double insuranceCost) {
-        this.insuranceCost = insuranceCost;
+    @Override
+    public double calculateRent(double distance) {
+        return this.rentalFee + distance + luxuryTax;
     }
 
-    public double calculateTotalCost() {
-        return this.getRentalFee() + this.getDamageCost() + this.getInsuranceCost();
+    @Override
+    public boolean isInsurable() {
+        return true;
+    }
+
+    // Additional methods for insurance, damage cost, and luxury tax calculations
+    public double calculateInsuranceCost() {
+        return this.rentalFee * this.insuranceCostPercentage;
     }
 
     public void printCar() {
-        System.out.println("Car ID-> " + this.getCarID());
-        System.out.println("Brand-> " + this.getBrand());
-        System.out.println("Model-> " + this.getModel());
-        System.out.println("Year-> " + this.getYear());
-        System.out.println("Insurable->" + this.isInsurable());
+        System.out.println("this is a LuxuryCar");
+        System.out.println("the id for the car is " + this.carID);
+        System.out.println("the brand for the car is " + this.brand);
+        System.out.println("the model for the car is " + this.model);
+        System.out.println("the year for the car is " + this.year);
+        System.out.println("the rental status for the car is " + this.rentalStatus);
+        System.out.println("the rental fee for the car is " + this.rentalFee);
+        System.out.println("the plate number for the car is " + this.plateNumber);
+        System.out.println(isInsurable() ? "The car is insurable" : "The car is not insurable");
 
     }
-
-    public double calculateRent() {
-        return getRentalFee() + getDamageCost();
-
-    }
-
 }
