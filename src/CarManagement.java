@@ -23,7 +23,20 @@ public class CarManagement {
         }
     }
 
+    public void setRentStatus(int carID, boolean status) {
+        for (Car car : allCars) {
+            if (car.getCarID() == carID) {
+                car.setRentalStatus(status);
+            }
+        }
+    }
+
     public Car getCar(int carID) {
+        if (allCars.isEmpty()) {
+            System.err.println("No cars available");
+            return null;
+        }
+
         for (Car car : allCars) {
             if (car.getCarID() == carID) {
                 return car;

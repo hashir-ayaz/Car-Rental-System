@@ -1,42 +1,12 @@
 public class CompactCar extends Car {
-    private boolean insurable;
-    private float distanceTravelledCost;
-    private String features;
 
     public CompactCar(int carID, String brand, String model, int year, boolean rentStatus, float fees,
             String numPlate, String featureList) {
         super(carID, brand, model, year, rentStatus, fees, numPlate);
+        this.setInsurable(false);
+        this.setDistanceTravelledCost((5 / 100) * fees); // 5% of base rent
+        this.setFeatures("compact car features");
 
-        this.insurable = false;
-        this.distanceTravelledCost = 0.0f;
-        this.features = featureList;
-
-    }
-
-    // Getters
-    public boolean isInsurable() {
-        return insurable;
-    }
-
-    public String getFeatures() {
-        return this.features;
-    }
-
-    public float getDistanceTravelledCost() {
-        return distanceTravelledCost;
-    }
-
-    // Setters
-    public void setInsurable(boolean insurable) {
-        this.insurable = insurable;
-    }
-
-    public void setDistanceTravelledCost(float distanceTravelledCost) {
-        this.distanceTravelledCost = distanceTravelledCost;
-    }
-
-    public void setFeatures(String featureList) {
-        this.features = featureList;
     }
 
     public void printCar() {
@@ -54,6 +24,11 @@ public class CompactCar extends Car {
         System.out.println("\t Insurable -> " + this.isInsurable());
         System.out.println("\n");
 
+    }
+
+    @Override
+    public double calculateRent() {
+        return getRentalFee() + getDistanceTravelledCost();
     }
 
 }

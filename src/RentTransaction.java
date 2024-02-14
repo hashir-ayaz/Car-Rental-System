@@ -88,7 +88,7 @@ public class RentTransaction {
                 + this.getCar().getCarID() + " for " + this.getNumDaysRented() + " days.");
         calculateTotalCost();
         System.out.println("\tThe total cost for this transaction is $" + this.getTotalCost());
-        System.out.println("\tThe distance travelled is " + this.getDistanceTravelled());
+        System.out.println("\tThe distance travelled cost is " + this.getDistanceTravelled());
         System.out.println("\tThe damage status is " + this.isHasDamage() + "\n");
     }
 

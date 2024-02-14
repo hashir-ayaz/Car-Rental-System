@@ -1,57 +1,29 @@
 public class SUV extends Car {
-    private boolean insurable;
     private double insuranceCost;
-    private float distanceTravelledCost;
-    private String features;
     private double damageCost;
 
-    public SUV(int carID, String brand, String model, int year, boolean rentStatus, float baseRent, String numPlate,
-            String featureList) {
-        super(carID, brand, model, year, rentStatus, baseRent, numPlate);
-        this.insurable = true;
-        this.distanceTravelledCost = 0.0f;
-        this.features = featureList;
-        this.damageCost = 0;
-        this.insuranceCost = 0.1 * baseRent; // 10% of rental fee
-
+    // constructor
+    public SUV(int carID, String brand, String model, int year, boolean rentStatus, float fees, String numPlate,
+            double damageCost, double insuranceCost) {
+        super(carID, brand, model, year, rentStatus, fees, numPlate);
+        this.damageCost = damageCost;
+        this.insuranceCost = insuranceCost;
+        this.setFeatures("basic SUV");
     }
 
     // getters
-    public boolean isInsurable() {
-        return insurable;
-    }
 
     public double getInsuranceCost() {
         return insuranceCost;
     }
 
-    public float getDistanceTravelledCost() {
-        return distanceTravelledCost;
-    }
-
-    public String getFeatures() {
-        return this.features;
-    }
-
     public double getDamageCost() {
-        return damageCost;
+        return this.damageCost;
     }
 
     // setters
-    public void setInsurable(boolean insurable) {
-        this.insurable = insurable;
-    }
-
     public void setInsuranceCost(int insuranceCost) {
         this.insuranceCost = insuranceCost;
-    }
-
-    public void setDistanceTravelledCost(float distanceTravelledCost) {
-        this.distanceTravelledCost = distanceTravelledCost;
-    }
-
-    public void setFeatures(String featureList) {
-        this.features = featureList;
     }
 
     public void setDamageCost(int damageCost) {
@@ -75,6 +47,10 @@ public class SUV extends Car {
         System.out.println("\t Damage Cost Percentage is -> " + this.getDamageCost());
         System.out.println("\n");
 
+    }
+
+    public double calculateRent() {
+        return this.getRentalFee() + this.getDamageCost() + this.getInsuranceCost();
     }
 
 }
